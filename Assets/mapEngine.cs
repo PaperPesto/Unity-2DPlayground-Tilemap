@@ -21,14 +21,17 @@ public class mapEngine : MonoBehaviour
         {
             var mouse = Input.mousePosition;
 
-            Debug.Log(mouse);
+            //Debug.Log(mouse);
 
-            int x = Mathf.FloorToInt(mouse.x/24);
-            int y = Mathf.FloorToInt(mouse.y/10);
-            int z = Mathf.FloorToInt(mouse.z);
+            var camerapos = Camera.main.ScreenToWorldPoint(mouse);
+            //Debug.Log("camerapos" + camerapos);
 
-            var nuovo = new Vector3Int(-3, -3, z);
-            Debug.Log("n" + nuovo);
+            int x = Mathf.FloorToInt(camerapos.x);
+            int y = Mathf.FloorToInt(camerapos.y);
+            int z = Mathf.FloorToInt(camerapos.z);
+
+            var nuovo = new Vector3Int(x, y, z);
+            //Debug.Log("n" + nuovo);
 
             TargetTileMap.SetTile(nuovo, GreenTile);
         }
